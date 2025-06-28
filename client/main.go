@@ -18,10 +18,13 @@ func main() {
 		log.Fatalf("Did not connect: %v", err)
 	}
 	defer conn.Close()
+
 	client := pb.NewGreetServiceClient(conn)
-	// names := &pb.NamesList{
-	// 	Names: []string{
-	// 		"Amol", "Pratap", "Gajare"},
-	// }
-	callSayHello(client)
+	names := &pb.NamesList{
+		Names: []string{
+			"Amol", "Pratap", "Gajare"},
+	}
+	// callSayHello(client)
+
+	callSayHelloServerStream(client, names)
 }
