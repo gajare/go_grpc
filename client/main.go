@@ -1,6 +1,7 @@
 package main
 
 import (
+	pb "go_grpc/proto"
 	"log"
 
 	"google.golang.org/grpc"
@@ -17,10 +18,10 @@ func main() {
 		log.Fatalf("Did not connect: %v", err)
 	}
 	defer conn.Close()
-	// client := pb.NewGreetServiceClient(conn)
+	client := pb.NewGreetServiceClient(conn)
 	// names := &pb.NamesList{
 	// 	Names: []string{
 	// 		"Amol", "Pratap", "Gajare"},
 	// }
-	// callSayHello(client)
+	callSayHello(client)
 }
